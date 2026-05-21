@@ -21,7 +21,7 @@ L-PRF Net optimizes the trade-off between recognition accuracy and computational
 
 ### 1. Semantics-Guided Token Pruning (SGTP)
 
-![Architecture of the SGTP module]
+![Architecture of the SGTP module](SGTP.png)
 *Figure 1: Architecture of the Semantic-Guided Token Pruning (SGTP) module.*
 
 At the shallow feature extraction stage, the **SGTP** module is introduced to filter out redundant background tokens and reduce computational burden. Unlike heuristic pruning based on low-level motion gradients, it leverages a frozen cross-modal vision-language model (CLIP) to extract prior semantic features. By calculating the relevance scores between video tokens and action semantics, it dynamically drops irrelevant background noise while perfectly preserving the 3D spatio-temporal topological structure necessary for downstream convolutions.
