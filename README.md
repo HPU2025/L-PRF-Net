@@ -21,21 +21,21 @@ L-PRF Net optimizes the trade-off between recognition accuracy and computational
 
 ### 1. Semantics-Guided Token Pruning (SGTP)
 
-![Architecture of the SGTP module](assets/sgtp.png)
+![Architecture of the SGTP module](SGTP.png)
 *Figure 1: Architecture of the Semantic-Guided Token Pruning (SGTP) module.*
 
 At the shallow feature extraction stage, the **SGTP** module is introduced to filter out redundant background tokens and reduce computational burden. Unlike heuristic pruning based on low-level motion gradients, it leverages a frozen cross-modal vision-language model (CLIP) to extract prior semantic features. By calculating the relevance scores between video tokens and action semantics, it dynamically drops irrelevant background noise while perfectly preserving the 3D spatio-temporal topological structure necessary for downstream convolutions.
 
 ### 2. Adaptive Dynamic Routing Agent (ADRA)
 
-![Architecture of the ADRA module](assets/adra.png)
+![Architecture of the ADRA module](Agent-2.png)
 *Figure 2: Internal architecture and computational flow of the ADRA module.*
 
 During the deep feature interaction stage, we design the **ADRA** to achieve spatio-temporal conditional computation. Utilizing Gumbel-Softmax and a Straight-Through Estimator (STE) bypass mechanism, this lightweight gating agent dynamically determines the activation depth of the Global UniBlocks based on the semantic complexity of the input sequence. This effectively mitigates the static computational waste caused by excessive inference of simple, periodic action samples in deep networks.
 
 ### 3. Fine-grained Feature Compensation Module (FFCM)
 
-![Architecture of the FFCM](assets/ffcm.png)
+![Architecture of the FFCM](FFCM.png)
 *Figure 3: Architecture of the FFCM with dense dilated convolutions and parallel dual attention.*
 
 To compensate for the potential attenuation of local structural details caused by spatial sparsification, the **FFCM** is embedded prior to the global attention blocks. It employs a densely distributed dilated convolution array (with small, continuous dilation rates $r \in \{1, 2, 3, 4\}$) to extract multi-scale contextual features without inducing "Gridding Artifacts". Subsequently, a parallel dual attention mechanism independently evaluates channel semantics and spatial locations, significantly enhancing the network's perceptual focusing capability on small-scale and locally occluded abnormal actions in complex environments.
