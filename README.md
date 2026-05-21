@@ -28,7 +28,7 @@ At the shallow feature extraction stage, the **SGTP** module is introduced to fi
 
 ### 2. Adaptive Dynamic Routing Agent (ADRA)
 
-![Architecture of the ADRA module](Agent-2.png)
+![Architecture of the ADRA module](ADRA.png)
 *Figure 2: Internal architecture and computational flow of the ADRA module.*
 
 During the deep feature interaction stage, we design the **ADRA** to achieve spatio-temporal conditional computation. Utilizing Gumbel-Softmax and a Straight-Through Estimator (STE) bypass mechanism, this lightweight gating agent dynamically determines the activation depth of the Global UniBlocks based on the semantic complexity of the input sequence. This effectively mitigates the static computational waste caused by excessive inference of simple, periodic action samples in deep networks.
